@@ -1,5 +1,8 @@
-/** ----------- @Images ----------- */
+/** --------- @Images ----------- */
 import marvelWhite from "@/assets/logo-white.svg";
+
+/** --------- @Component -------- */
+import { Button } from "@components";
 
 const Header = () => {
   return (
@@ -22,7 +25,9 @@ const Header = () => {
           <li className="text-textColor cursor-pointer">Enterprice</li>
           <li className="text-textColor cursor-pointer">Pricing</li>
           <li className="text-textColor cursor-pointer">Sign in</li>
-          <li className="text-textColor cursor-pointer">Button</li>
+          <li className="text-textColor cursor-pointer">
+            <Button title="Sign up free" mode="secondary" />
+          </li>
         </ul>
       </nav>
     </section>
