@@ -38,7 +38,7 @@ const Features = () => {
           integrations for our 2 millions users - or simply just for your team.
         </p>
       </div>
-      <div className="flex flex-col mt-9 gap-8 sm:flex-row sm:p-10">
+      <div className="flex flex-col mt-9 gap-8 sm:flex-row sm:p-10 md:w-[800px] md:mx-auto">
         {featureCard.length !== 0 &&
           featureCard.map(({ image, header, description }) => (
             <FeatureCards
