@@ -52,14 +52,17 @@ const Services = () => {
             Building something special? We're always looking to work with
             partners who want to help the world bring their ideas to life
           </p>
-          <div className="flex flex-col gap-5 w-[50%] mx-auto justify-center sm:flex-row sm:w-full">
+          <div className="flex flex-col gap-5 w-[60%] mx-auto justify-center sm:flex-row sm:w-full">
             {/* sm < */}
             <Button
               title="Become a partner"
               mode="secondary"
-              className="text-sm"
+              className="py-3 px-7 sm:text-sm sm:px-4 sm:py-1"
             />
-            <Button title="View Integrations" className="text-sm" />
+            <Button
+              title="View Integrations"
+              className="py-3 px-7 sm:text-sm sm:px-4 sm:py-1"
+            />
           </div>
         </div>
       </div>
