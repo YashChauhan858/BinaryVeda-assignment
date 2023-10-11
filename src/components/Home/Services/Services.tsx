@@ -6,10 +6,14 @@ import { Button } from "@/components";
 
 const Services = () => {
   return (
-    <section className="flex flex-col mt-20 gap-20 p-5 sm:flex-col-reverse sm:w-full md:w-[850px] md:mx-auto">
+    <section className="flex flex-col mt-20 gap-20 p-5 sm:flex-col-reverse sm:w-full md:w-[768px] md:mx-auto">
       {/* Section 1 */}
-      <div className="flex flex-col gap-10 items-center sm:flex-row sm:gap-20">
-        <img src={botbot} alt="marvel-bot" className="object-contain sm:w-96" />
+      <div className="flex flex-col gap-10 items-center sm:flex-row sm:gap-0">
+        <img
+          src={botbot}
+          alt="marvel-bot"
+          className="object-contain sm:w-[100%]"
+        />
         <div className="flex flex-col justify-center gap-5 sm:gap-5">
           <h1 className="text-textColor font-bold text-3xl sm:text-2xl text-center">
             BotBot - Slack Bot for creating and managing prototype
@@ -34,11 +38,11 @@ const Services = () => {
         </div>
       </div>
       {/* Section 2 */}
-      <div className="flex flex-col gap-10 items-center sm:gap-20 sm:flex-row-reverse">
+      <div className="flex flex-col gap-10 items-center sm:gap-0 sm:flex-row-reverse">
         <img
           src={showcase}
-          alt="marvel-bot"
-          className="object-contain sm:w-96"
+          alt="app-integration"
+          className="object-contain sm:w-[100%]"
         />
         <div className="flex flex-col justify-center gap-5 sm:gap-5">
           <h1 className="text-textColor font-bold text-3xl sm:text-2xl text-center">
