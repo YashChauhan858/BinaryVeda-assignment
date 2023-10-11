@@ -11,7 +11,7 @@ const Header = () => {
   const toggleMobileNav = () => setMobileNav((prevState) => !prevState);
 
   return (
-    <section className="p-3 sm:p-8 flex justify-between items-center select-none sticky top-0 bg-backgroundColor">
+    <header className="p-3 sm:p-8 flex justify-between items-center select-none sticky top-0 bg-backgroundColor">
       {/* Logo section */}
       <div className="flex gap-2 items-center">
         <img src={marvelWhite} className="h-7" alt="marvel-developers-logo" />
@@ -68,7 +68,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-    </section>
+    </header>
   );
 };
 
