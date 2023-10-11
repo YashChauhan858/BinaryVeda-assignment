@@ -1,11 +1,17 @@
 import { Route, Routes } from "react-router-dom";
+/** -------- @Pages ----------- */
 import { Home } from "@pages";
+/** -------- @Components ------ */
+import { Header } from "@components";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
+    <main className="h-full bg-backgroundColor">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </main>
   );
 }
 
