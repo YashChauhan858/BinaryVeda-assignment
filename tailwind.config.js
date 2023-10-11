@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        backgroundColor: "#0A0A0A",
+        backgroundColor: "#0c1014",
         textColor: "#e2e8f0",
         textColorMuted: "#8e9cb1",
       },
