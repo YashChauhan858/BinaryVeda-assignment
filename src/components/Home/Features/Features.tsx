@@ -30,10 +30,10 @@ const Features = () => {
   return (
     <section>
       <div className="flex flex-col justify-center mt-16 gap-10 sm:gap-5 sm:mt-32 sm:w-[50%] sm:mx-auto">
-        <h2 className="text-textColor font-bold text-4xl sm:text-2xl text-center">
+        <h2 className="text-textColor font-bold text-3xl sm:text-2xl text-center px-1">
           Experience the freedom to build features, right away.
         </h2>
-        <p className="text-textColor text-center text-lg sm:text-sm">
+        <p className="text-textColor text-center text-lg sm:text-sm px-4">
           You can now harness components of our platform and build powerful
           integrations for our 2 millions users - or simply just for your team.
         </p>

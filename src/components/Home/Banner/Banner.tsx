@@ -7,7 +7,7 @@ const Banner = () => {
   return (
     <section className="flex flex-col sm:flex-row sm:w-[90%] sm:mx-auto md:w-[768px] lg:w-[1000px] md:px-16 justify-center pt-10 gap-5">
       <div className="flex flex-col justify-center gap-10 sm:gap-5">
-        <h1 className="text-textColor font-bold text-4xl sm:text-2xl text-center">
+        <h1 className="text-textColor font-bold text-4xl sm:text-2xl text-center px-2">
           Let{"'"}s build the future of design, together
         </h1>
         <p className="text-textColor text-center text-lg sm:text-sm w-[80%] mx-auto">
