@@ -13,7 +13,7 @@ const Button = ({
 }: IButton) => {
   // Style picker
   const styles = {
-    primary: "bg-blue-600",
+    primary: "bg-blue-600 text-textColor",
     secondary: "bg-textColor text-backgroundColor",
     regular: "border-[1px] border-textColor bg-transparent text-textColor",
   };
