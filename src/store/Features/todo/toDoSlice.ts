@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import initialState from "./initialState";
+import * as actions from "./action";
 
 const toDoSlice = createSlice({
   // Used for refrencing the slice
@@ -7,7 +8,7 @@ const toDoSlice = createSlice({
   // like todo/incrementer
   name: "toDo",
   initialState,
-  reducers: {},
+  reducers: actions,
 });
 
 /**
@@ -16,7 +17,7 @@ const toDoSlice = createSlice({
  * 2. action creators for each of the different functions defined in the reducr field
  */
 // Exporting actions
-// export const {} = toDoSlice.actions;
+export const { changeTodoStatusById } = toDoSlice.actions;
 
 // Exporting reducer
 export default toDoSlice.reducer;

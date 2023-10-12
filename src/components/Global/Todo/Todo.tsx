@@ -1,13 +1,18 @@
 import { useState } from "react";
-import { Selector } from "@/store";
+import { Dispatch, Selector, changeTodoStatusById } from "@/store";
 
 const Todo = () => {
+  // Fetch todo list from redux store
   const todoList = Selector((state) => state.todo.todo);
-
+  // Check whether the list is a valid or not
   const isValidTodoList = !!todoList && todoList.length !== 0;
 
-  const [toggleTodoWidget, setToggleTodoWidget] = useState(true);
+  const dispatch = Dispatch();
+  // Change todo status to "DONE" or "Pending" by id
+  const changeStatusById = (id: number) => dispatch(changeTodoStatusById(id));
 
+  const [toggleTodoWidget, setToggleTodoWidget] = useState(true);
+  // Toggle todo widget UI
   const toggler = () => setToggleTodoWidget((prevState) => !prevState);
 
   return (
@@ -29,13 +34,14 @@ const Todo = () => {
                     name=""
                     id=""
                     checked={todo.status === "DONE" ? true : false}
+                    onClick={() => changeStatusById(todo.id)}
                   />
                   <p
                     className={`${
                       todo.status === "DONE"
                         ? "line-through text-textColorMuted"
                         : ""
-                    }`}
+                    } truncate`}
                   >
                     {todo.task}
                   </p>
