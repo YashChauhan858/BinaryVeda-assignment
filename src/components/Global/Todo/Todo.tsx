@@ -6,7 +6,7 @@ import "react-calendar/dist/Calendar.css";
 
 const Todo = () => {
   const [todoWidgetState, setTodoWidgetState] = useState({
-    show: false,
+    show: true,
     todo: "",
     showCalendar: false,
     todoDate: new Date().toLocaleDateString("en-US"),
@@ -80,7 +80,7 @@ const Todo = () => {
         <h4>TODO</h4>
       </div>
       {todoWidgetState.show && (
-        <div className="h-80 w-72 bg-white absolute -top-[20.5rem] right-3 rounded-lg p-2">
+        <div className="h-80 w-72 bg-white absolute -top-[20.8rem] right-3 rounded-lg p-2">
           {todoWidgetState.showCalendar && (
             <div className="absolute -top-[20rem] right-0 lg:top-0 lg:right-[105%]">
               <Calendar
@@ -91,6 +91,7 @@ const Todo = () => {
               />
             </div>
           )}
+          <div className="triangleClip bg-white absolute -bottom-3 right-4 w-5 h-3"></div>
           <div className="mb-3">
             <p onClick={togglerCalendar}>
               {todoWidgetState.todoDate ===
