@@ -14,6 +14,8 @@
       "@pages": ["src/pages"],
       "@components/*": ["src/components/*"],
       "@components": ["src/components"],
+      "@store/*": ["src/store/*"],
+      "@store": ["src/store"]
     },
 
     /* Bundler mode */
