@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 /** -------- @Pages ----------- */
 import { Home } from "@pages";
 /** -------- @Components ------ */
-import { Footer, Header } from "@components";
+import { Footer, Header, Todo } from "@components";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
+      <Todo />
       <Footer />
     </main>
   );
