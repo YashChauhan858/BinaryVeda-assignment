@@ -82,7 +82,7 @@ const Todo = () => {
       {todoWidgetState.show && (
         <div className="h-80 w-72 bg-white absolute -top-[20.5rem] right-3 rounded-lg p-2">
           {todoWidgetState.showCalendar && (
-            <div className="absolute -top-[20rem] right-0">
+            <div className="absolute -top-[20rem] right-0 lg:top-0 lg:right-[105%]">
               <Calendar
                 value={new Date(todoWidgetState.todoDate)}
                 onChange={(d) => {
