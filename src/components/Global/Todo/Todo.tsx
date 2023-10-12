@@ -93,13 +93,18 @@ const Todo = () => {
             </div>
           )}
           <div className="triangleClip bg-white absolute -bottom-3 right-4 w-5 h-3"></div>
-          <div className="mb-3">
+          <div className="mb-3 flex justify-between items-center pr-4">
             <p onClick={togglerCalendar}>
               {todoWidgetState.todoDate ===
               new Date().toLocaleDateString("en-US")
                 ? "Today"
                 : todoWidgetState.todoDate}
             </p>
+            <div className="flex gap-1 cursor-pointer">
+              <span className="h-[.4rem] w-[.4rem] rounded-full bg-textColorMuted"></span>
+              <span className="h-[.4rem] w-[.4rem] rounded-full bg-textColorMuted"></span>
+              <span className="h-[.4rem] w-[.4rem] rounded-full bg-textColorMuted"></span>
+            </div>
           </div>
           <div className="overflow-scroll overflow-x-hidden h-36">
             {isValidTodoList &&
