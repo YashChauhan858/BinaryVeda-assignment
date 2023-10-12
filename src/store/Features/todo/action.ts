@@ -4,24 +4,32 @@ import { v4 as uuidv4 } from "uuid";
 
 const changeTodoStatusById = (
   state: IinitialState,
-  action: PayloadAction<string>
+  action: PayloadAction<{ id: string; todoDate: string }>
 ) => {
-  const id = action.payload;
-  state.todo.forEach((todo) => {
+  const { id, todoDate } = action.payload;
+  const todoList = state.todoByDate[todoDate];
+  todoList.forEach((todo) => {
     if (todo.id === id) {
       todo.status = todo.status === "DONE" ? "PENDING" : "DONE";
     }
   });
 };
 
-const addTodo = (state: IinitialState, action: PayloadAction<string>) => {
-  const todo = action.payload;
+const addTodo = (
+  state: IinitialState,
+  action: PayloadAction<{ todo: string; dateString: string }>
+) => {
+  const { todo, dateString } = action.payload;
   const newTodo: todoItem = {
     id: uuidv4(),
     status: "PENDING",
     task: todo,
   };
-  state.todo.unshift(newTodo);
+  if (dateString in state.todoByDate) {
+    state.todoByDate[dateString].push(newTodo);
+  } else {
+    state.todoByDate[dateString] = [newTodo];
+  }
 };
 
 export { changeTodoStatusById, addTodo };

@@ -1,10 +1,11 @@
 import { Dispatch, changeTodoStatusById } from "@/store";
 import { todoItem } from "@/store/Features/todo/initialState";
 
-const TodoItem = ({ todo }: { todo: todoItem }) => {
+const TodoItem = ({ todo, todoDate }: { todo: todoItem; todoDate: string }) => {
   const dispatch = Dispatch();
   // Change todo status to "DONE" or "Pending" by id
-  const changeStatusById = (id: string) => dispatch(changeTodoStatusById(id));
+  const changeStatusById = (id: string) =>
+    dispatch(changeTodoStatusById({ id, todoDate }));
 
   return (
     <div className="flex items-center gap-2">
@@ -13,7 +14,7 @@ const TodoItem = ({ todo }: { todo: todoItem }) => {
         name=""
         id=""
         checked={todo.status === "DONE" ? true : false}
-        onClick={() => changeStatusById(todo.id)}
+        onChange={() => changeStatusById(todo.id)}
       />
       <p
         className={`${

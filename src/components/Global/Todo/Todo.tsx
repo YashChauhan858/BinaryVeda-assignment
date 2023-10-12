@@ -1,25 +1,41 @@
 import { useState, FormEvent } from "react";
 import { Dispatch, Selector, addTodo } from "@/store";
 import TodoItem from "./subComponents/TodoItem";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const Todo = () => {
-  // Fetch todo list from redux store
-  const todoList = Selector((state) => state.todo.todo);
+  const [todoWidgetState, setTodoWidgetState] = useState({
+    show: false,
+    todo: "",
+    showCalendar: false,
+    todoDate: new Date().toLocaleDateString("en-US"),
+  });
+
+  // Fetch todo object from redux store
+  const todoByDate = Selector((state) => state.todo.todoByDate);
+  // Picking the todo list by date (string => dd/mm/yyyy)
+  const todoList = todoByDate[todoWidgetState.todoDate] ?? [];
+
   // Check whether the list is a valid or not
   const isValidTodoList = !!todoList && todoList.length !== 0;
 
   const dispatch = Dispatch();
 
-  const [todoWidgetState, setTodoWidgetState] = useState({
-    show: true,
-    todo: "",
-  });
   // Toggle todo widget UI
   const toggler = () =>
     setTodoWidgetState((prevState) => ({
       ...prevState,
       show: !prevState.show,
     }));
+
+  // Toggle todo calendar
+  const togglerCalendar = () =>
+    setTodoWidgetState((prevState) => ({
+      ...prevState,
+      showCalendar: !prevState.showCalendar,
+    }));
+
   // Todo input box handler
   const todoHandler = (todo: string) =>
     setTodoWidgetState((prevState) => ({
@@ -27,10 +43,27 @@ const Todo = () => {
       todo,
     }));
 
+  // Todo date handler
+  const todoDateHandler = (d: Date) => {
+    // User cannot add a date less than the current date
+    const isInvalidDate =
+      d.getTime() < new Date(new Date().toLocaleDateString("en-US")).getTime();
+    if (isInvalidDate) return;
+    setTodoWidgetState((prevState) => ({
+      ...prevState,
+      todoDate: d.toLocaleDateString("en-US"),
+    }));
+  };
+
   // Add new todo to list
   const addNewTodo = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addTodo(todoWidgetState.todo));
+    dispatch(
+      addTodo({
+        todo: todoWidgetState.todo,
+        dateString: todoWidgetState.todoDate,
+      })
+    );
     // Reset todo input field
     setTodoWidgetState((prevState) => ({
       ...prevState,
@@ -47,10 +80,34 @@ const Todo = () => {
         <h4>TODO</h4>
       </div>
       {todoWidgetState.show && (
-        <div className="h-72 w-72 bg-white absolute -top-[19rem] right-3 rounded-lg p-2">
+        <div className="h-80 w-72 bg-white absolute -top-[20.5rem] right-3 rounded-lg p-2">
+          {todoWidgetState.showCalendar && (
+            <div className="absolute -top-[20rem] right-0">
+              <Calendar
+                value={new Date(todoWidgetState.todoDate)}
+                onChange={(d) => {
+                  todoDateHandler(d as Date);
+                }}
+              />
+            </div>
+          )}
+          <div className="mb-3">
+            <p onClick={togglerCalendar}>
+              {todoWidgetState.todoDate ===
+              new Date().toLocaleDateString("en-US")
+                ? "Today"
+                : todoWidgetState.todoDate}
+            </p>
+          </div>
           <div className="overflow-scroll overflow-x-hidden h-56">
             {isValidTodoList &&
-              todoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
+              todoList.map((todo) => (
+                <TodoItem
+                  key={todo.id}
+                  todo={todo}
+                  todoDate={todoWidgetState.todoDate}
+                />
+              ))}
             {!isValidTodoList && (
               <div className="h-full w-full grid place-content-center">
                 <p className="font-semibold text-textColorMuted">No Todo</p>

@@ -1,12 +1,13 @@
 export interface IinitialState {
-  todo: todoItem[];
+  todoByDate: todoByDateType;
 }
+
+export type todoByDateType = Record<string, todoItem[]>;
 
 export type todoItem = { id: string; status: "DONE" | "PENDING"; task: string };
 
 const initialState: IinitialState = {
-  todo: [
-  ],
+  todoByDate: {},
 };
 
 export default initialState;
