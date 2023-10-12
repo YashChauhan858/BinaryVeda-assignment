@@ -6,7 +6,7 @@ import "react-calendar/dist/Calendar.css";
 
 const Todo = () => {
   const [todoWidgetState, setTodoWidgetState] = useState({
-    show: true,
+    show: false,
     todo: "",
     showCalendar: false,
     todoDate: new Date().toLocaleDateString("en-US"),
