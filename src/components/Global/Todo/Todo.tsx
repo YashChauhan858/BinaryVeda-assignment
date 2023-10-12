@@ -81,7 +81,7 @@ const Todo = () => {
         <h4>TODO</h4>
       </div>
       {todoWidgetState.show && (
-        <div className="h-80 w-72 bg-white absolute -top-[20.8rem] right-3 rounded-lg p-2">
+        <div className="h-60 w-72 bg-white absolute -top-[15.8rem] right-3 rounded-lg p-2">
           {todoWidgetState.showCalendar && (
             <div className="absolute -top-[20rem] right-0 lg:top-0 lg:right-[105%]">
               <Calendar
@@ -101,7 +101,7 @@ const Todo = () => {
                 : todoWidgetState.todoDate}
             </p>
           </div>
-          <div className="overflow-scroll overflow-x-hidden h-56">
+          <div className="overflow-scroll overflow-x-hidden h-36">
             {isValidTodoList &&
               todoList.map((todo) => (
                 <TodoItem
