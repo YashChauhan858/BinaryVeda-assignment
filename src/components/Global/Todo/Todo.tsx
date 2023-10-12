@@ -121,7 +121,9 @@ const Todo = () => {
               placeholder="New Todo"
               value={todoWidgetState.todo}
               className="outline-none mt-3"
-              onChange={({ target: { value } }) => todoHandler(value)}
+              onChange={({ target: { value } }) =>
+                todoHandler(value.trimStart())
+              }
             />
           </form>
         </div>
