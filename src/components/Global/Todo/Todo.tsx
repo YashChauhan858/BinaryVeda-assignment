@@ -48,10 +48,11 @@ const Todo = () => {
     // User cannot add a date less than the current date
     const isInvalidDate =
       d.getTime() < new Date(new Date().toLocaleDateString("en-US")).getTime();
-    if (isInvalidDate) return;
     setTodoWidgetState((prevState) => ({
       ...prevState,
-      todoDate: d.toLocaleDateString("en-US"),
+      todoDate: isInvalidDate
+        ? new Date().toLocaleDateString("en-US")
+        : d.toLocaleDateString("en-US"),
     }));
   };
 
