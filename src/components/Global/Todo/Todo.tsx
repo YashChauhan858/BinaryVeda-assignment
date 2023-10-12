@@ -71,6 +71,11 @@ const Todo = () => {
                   </p>
                 </div>
               ))}
+            {!isValidTodoList && (
+              <div className="h-full w-full grid place-content-center">
+                <p className="font-semibold text-textColorMuted">No Todo</p>
+              </div>
+            )}
           </div>
           <form onSubmit={addNewTodo}>
             <input
