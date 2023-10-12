@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
-import { Dispatch, Selector, addTodo, changeTodoStatusById } from "@/store";
+import { Dispatch, Selector, addTodo } from "@/store";
+import TodoItem from "./subComponents/TodoItem";
 
 const Todo = () => {
   // Fetch todo list from redux store
@@ -8,8 +9,6 @@ const Todo = () => {
   const isValidTodoList = !!todoList && todoList.length !== 0;
 
   const dispatch = Dispatch();
-  // Change todo status to "DONE" or "Pending" by id
-  const changeStatusById = (id: string) => dispatch(changeTodoStatusById(id));
 
   const [todoWidgetState, setTodoWidgetState] = useState({
     show: true,
@@ -51,26 +50,7 @@ const Todo = () => {
         <div className="h-72 w-72 bg-white absolute -top-[19rem] right-3 rounded-lg p-2">
           <div className="overflow-scroll overflow-x-hidden h-56">
             {isValidTodoList &&
-              todoList.map((todo) => (
-                <div key={todo.id} className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    name=""
-                    id=""
-                    checked={todo.status === "DONE" ? true : false}
-                    onClick={() => changeStatusById(todo.id)}
-                  />
-                  <p
-                    className={`${
-                      todo.status === "DONE"
-                        ? "line-through text-textColorMuted"
-                        : ""
-                    } truncate`}
-                  >
-                    {todo.task}
-                  </p>
-                </div>
-              ))}
+              todoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
             {!isValidTodoList && (
               <div className="h-full w-full grid place-content-center">
                 <p className="font-semibold text-textColorMuted">No Todo</p>
