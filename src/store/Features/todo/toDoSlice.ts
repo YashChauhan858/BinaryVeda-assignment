@@ -17,7 +17,7 @@ const toDoSlice = createSlice({
  * 2. action creators for each of the different functions defined in the reducr field
  */
 // Exporting actions
-export const { changeTodoStatusById } = toDoSlice.actions;
+export const { changeTodoStatusById, addTodo } = toDoSlice.actions;
 
 // Exporting reducer
 export default toDoSlice.reducer;

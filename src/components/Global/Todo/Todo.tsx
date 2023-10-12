@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Dispatch, Selector, changeTodoStatusById } from "@/store";
+import { useState, FormEvent } from "react";
+import { Dispatch, Selector, addTodo, changeTodoStatusById } from "@/store";
 
 const Todo = () => {
   // Fetch todo list from redux store
@@ -9,11 +9,35 @@ const Todo = () => {
 
   const dispatch = Dispatch();
   // Change todo status to "DONE" or "Pending" by id
-  const changeStatusById = (id: number) => dispatch(changeTodoStatusById(id));
+  const changeStatusById = (id: string) => dispatch(changeTodoStatusById(id));
 
-  const [toggleTodoWidget, setToggleTodoWidget] = useState(true);
+  const [todoWidgetState, setTodoWidgetState] = useState({
+    show: true,
+    todo: "",
+  });
   // Toggle todo widget UI
-  const toggler = () => setToggleTodoWidget((prevState) => !prevState);
+  const toggler = () =>
+    setTodoWidgetState((prevState) => ({
+      ...prevState,
+      show: !prevState.show,
+    }));
+  // Todo input box handler
+  const todoHandler = (todo: string) =>
+    setTodoWidgetState((prevState) => ({
+      ...prevState,
+      todo,
+    }));
+
+  // Add new todo to list
+  const addNewTodo = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(addTodo(todoWidgetState.todo));
+    // Reset todo input field
+    setTodoWidgetState((prevState) => ({
+      ...prevState,
+      todo: "",
+    }));
+  };
 
   return (
     <div className="fixed bottom-5 right-5 select-none">
@@ -23,7 +47,7 @@ const Todo = () => {
       >
         <h4>TODO</h4>
       </div>
-      {toggleTodoWidget && (
+      {todoWidgetState.show && (
         <div className="h-72 w-72 bg-white absolute -top-[19rem] right-3 rounded-lg p-2">
           <div className="overflow-scroll overflow-x-hidden h-56">
             {isValidTodoList &&
@@ -48,11 +72,15 @@ const Todo = () => {
                 </div>
               ))}
           </div>
-          <input
-            type="text"
-            placeholder="New Todo"
-            className="outline-none mt-3"
-          />
+          <form onSubmit={addNewTodo}>
+            <input
+              type="text"
+              placeholder="New Todo"
+              value={todoWidgetState.todo}
+              className="outline-none mt-3"
+              onChange={({ target: { value } }) => todoHandler(value)}
+            />
+          </form>
         </div>
       )}
     </div>
