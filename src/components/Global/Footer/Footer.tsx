@@ -2,7 +2,7 @@ import marvelLogo from "@/assets/logo-white.svg";
 
 const Footer = () => {
   return (
-    <footer className="p-5 mt-10 pb-10 flex flex-col gap-5 md:flex-row md:justify-center md:gap-1 md:w-[90%] md:mx-auto">
+    <footer className="p-5 mt-20 pb-10 flex flex-col gap-5 md:flex-row md:justify-center md:gap-1 md:w-[90%] md:mx-auto">
       <img
         src={marvelLogo}
         alt="marvel-logo"
