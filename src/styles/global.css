@@ -11,6 +11,11 @@ body {
   /* height: 100%; */
 }
 
+/* Remove blue highlight box on mobile devices */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .triangleClip {
   clip-path: polygon(100% 0, 0 0, 50% 100%);
 }
